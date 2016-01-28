@@ -13,8 +13,6 @@ Eduardo is an implementation of the Elo rating system. The expected scores of
 players are calculated using the logistic curve, and the k-factor can be
 parameterized.
 
-I made this to help rank quality of photos here at Yelp!
-
 Usage
 =====
     from eduardo import Elo
