@@ -7,8 +7,8 @@ class Elo:
     def __init__(self):
         self.players = []
 
-    def create_player(self, value):
-        new_player = _Player(value)
+    def create_player(self, key, value):
+        new_player = _Player(key, value)
         self.players.append(new_player)
 
         return new_player
@@ -19,7 +19,8 @@ class Elo:
 
 class _Player:
     # TODO: add logging and recalculate from the logging (dirty checking?)
-    def __init__(self, kvalue):
+    def __init__(self, id, value):
+        self_id = id
         self.value = value
         self.rating = 1000
         self._k_factor = K_FACTOR

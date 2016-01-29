@@ -1,23 +1,17 @@
-Eduardo
-=======
+#from __future__ import absolute_import
 
-> Eduardo Saverin: Are you all right?
 
-> Mark Zuckerberg: I need you.
+if __name__ == '__main__':
+    if __package__ is None:
+        import sys
+        from os import path
+        sys.path.append(path.dirname(path.dirname(path.abspath(__file__))))
+        from eduardo import Elo
+    else:
+        from ..Elo import Elo
 
-> Eduardo Saverin: I'm here for you.
-
-> Mark Zuckerberg: No, I need the algorithm you used to rank chess players.
-
-Eduardo is an implementation of the Elo rating system. The expected scores of
-players are calculated using the logistic curve, and the k-factor can be
-parameterized.
-
-Usage
-=====
-    from eduardo import Elo
-    elo = Elo()
     # TODO: add option for default starting elo
+    elo = Elo()
 
     # players can be of any type
     users = [1, 'hello', [5], {'name': 'lawrence'}]
@@ -39,5 +33,5 @@ Usage
     # elo.find(1)
 
     # see a player's rating
-    print(lawrence.rating)
-    print(garry.rating)
+    assert(lawrence.rating == 984.0)
+    assert(garry.rating == 1016.0)
