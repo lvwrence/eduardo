@@ -26,7 +26,10 @@ if __name__ == '__main__':
     assert garry.rating == 1016.0
 
     # find players by id
-    assert lawrence == chess_world.find_player('lawrence')
+    assert chess_world.find_player('lawrence') == lawrence
+
+    # get all players as a dict
+    assert chess_world.players == {'bobby': bobby, 'garry': garry, 'lawrence': lawrence, 'magnus': magnus}
 
 
     # modify defaults: higher k-factor means higher sensitivity
@@ -39,4 +42,6 @@ if __name__ == '__main__':
 
         games = [line.rstrip() for line in games.readlines()]
         for winner, loser in [game.split('>') for game in games]:
-            print("winner= " + winner)
+            photo_world.log_game(winner, loser)
+
+    print 'all tests passed'

@@ -21,16 +21,15 @@ class Environment:
     def gamestate(self):
         return _Gamestate(self._games, self.starting_elo, self.k_factor)
 
-    def create_player(self, id, value=None):
+    def create_player(self, id):
         """Creates a new entity in the environment (called players) and
         initializes it with the default elo and k-factor. Also injects this
         environment into the player, so it can access the games it's played.
 
         :param id: key that we can locate the player by.
-        :param value:
         :return: a Player entity
         """
-        new_player = _Player(id, value, self)
+        new_player = _Player(id, self)
         self.players[id] = new_player
         return new_player
 
@@ -70,10 +69,12 @@ class _Gamestate:
 
 
 class _Player:
-    def __init__(self, id, value, env):
+    def __init__(self, id, env):
         self._id = id
-        self.value = value
         self._env = env
+
+    def __repr__(self):
+        return str(self.rating)
 
     @property
     def rating(self):
