@@ -1,5 +1,5 @@
-#from __future__ import absolute_import
-
+import os
+script_dir = os.path.dirname(__file__)
 
 if __name__ == '__main__':
     if __package__ is None:
@@ -36,7 +36,8 @@ if __name__ == '__main__':
     photo_world = Elo(starting_elo=1400, k_factor=16)
 
     # use log_game to record batches of games
-    with open('data/players.txt', 'r') as players, open('data/games.txt', 'r') as games:
+    with open(os.path.join(script_dir, 'data/players.txt'), 'r') as players, \
+            open(os.path.join(script_dir, 'data/games.txt'), 'r') as games:
         urls = [line.rstrip() for line in players.readlines()]
         photo_players = [photo_world.create_player(url) for url in urls]
 

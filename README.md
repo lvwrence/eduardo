@@ -17,6 +17,10 @@ Installation
 ============
     pip install eduardo
 
+Testing
+=======
+    python eduardo/tests/test.py
+
 Usage
 =====
     # default elo is 1000 and default k-factor is 32
